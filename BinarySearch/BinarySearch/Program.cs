@@ -24,7 +24,7 @@ namespace BinarySearch
             }
 
             // use of BinarySearch
-            Array.Sort(a);
+            Array.Sort(a);            
             //foreach (int i in a) Console.WriteLine(i);
             if (BinarySearch(5, a,ref nSteps) != -1) Console.WriteLine("Element found");
             else Console.WriteLine("Element not found!");
