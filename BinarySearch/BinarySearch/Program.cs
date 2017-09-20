@@ -46,9 +46,7 @@ namespace BinarySearch
                 if (key < a[mid]) hi = mid - 1;
                 else if (key > a[mid]) low = mid + 1;
                 else return mid;
-
             }
-
             return -1;
         }
 
