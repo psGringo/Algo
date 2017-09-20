@@ -1,0 +1,9 @@
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\bin\Debug\01_GCD.exe.config
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\bin\Debug\01_GCD.exe
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\bin\Debug\01_GCD.pdb
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\obj\Debug\01_GCD.csprojResolveAssemblyReference.cache
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\obj\Debug\01_GCD.exe
+C:\C#\MyC#StudyProjects\16_Algorhytms\01_GCD\01_GCD\obj\Debug\01_GCD.pdb
+C:\C#\csAlgorhytms\01_GCD\01_GCD\bin\Debug\01_GCD.exe.config
+C:\C#\csAlgorhytms\01_GCD\01_GCD\obj\Debug\01_GCD.exe
+C:\C#\csAlgorhytms\01_GCD\01_GCD\obj\Debug\01_GCD.pdb
