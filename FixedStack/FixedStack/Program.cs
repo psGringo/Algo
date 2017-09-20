@@ -12,8 +12,9 @@ namespace FixedStack
         {                   
                 // fill stack with Count elements
                 int Count = 10;
-                FixedCapacityStackOfStrings s = new FixedCapacityStackOfStrings(Count);
-                Random r = new Random();
+            //FixedCapacityStackOfStrings s = new FixedCapacityStackOfStrings(Count);
+            FixedGenericsStack<string> s = new FixedGenericsStack<string>(Count);
+            Random r = new Random();
                 Console.WriteLine("lets fill stack with Count elements");
                 for (int i = 0; i < Count; i++)
                 {
@@ -57,5 +58,26 @@ namespace FixedStack
             return a[--N];
         }
     }
+
+    class FixedGenericsStack<T>
+    {
+        private T[] a;
+        public int N;
+        public FixedGenericsStack(int ACapacity)
+        {
+            a = new T[ACapacity];
+        }
+        public bool isEmpty() { return N == 0; }
+        public int size() { return N; }
+        public void push(T item)
+        {
+            a[N++] = item;
+        }
+        public T pop()
+        {
+            return a[--N];
+        }
+    }
+
 
 }
