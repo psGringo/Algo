@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOnOneLinkedList", "StackOnOneLinkedList\StackOnOneLinkedList.csproj", "{154B804F-A688-493C-9A3E-1E135F3BA1A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FixedStack", "..\..\FixedStack\FixedStack\FixedStack.csproj", "{D0278787-E796-440E-A06F-5EA404312621}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{154B804F-A688-493C-9A3E-1E135F3BA1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154B804F-A688-493C-9A3E-1E135F3BA1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154B804F-A688-493C-9A3E-1E135F3BA1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154B804F-A688-493C-9A3E-1E135F3BA1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0278787-E796-440E-A06F-5EA404312621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0278787-E796-440E-A06F-5EA404312621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0278787-E796-440E-A06F-5EA404312621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0278787-E796-440E-A06F-5EA404312621}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

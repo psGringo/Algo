@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FixedStack
+namespace StackOnOneLinkedList
 {
     class Program
     {
@@ -13,14 +13,14 @@ namespace FixedStack
         {
             // fill stack with Count elements
             int Count = 10;
-            FixedCapacityStackOfStrings stack = new FixedCapacityStackOfStrings(Count);
+            CustomStackLinkedList<string> stack = new CustomStackLinkedList<string>();
             //FixedGenericsStack<string> stack = new FixedGenericsStack<string>(Count);
             Random r = new Random();
             Console.WriteLine("lets fill stack with Count elements");
             for (int i = 0; i < Count; i++)
             {
                 int someRandomNumber = r.Next(100);
-                stack.push(someRandomNumber.ToString());                
+                stack.push(someRandomNumber.ToString());
             }
 
             // iterator
@@ -40,74 +40,64 @@ namespace FixedStack
             if (stack.isEmpty()) Console.WriteLine("Yes"); else Console.WriteLine("No");
 
             Console.ReadLine();
+
+
         }
     }
 
-    class FixedCapacityStackOfStrings:IEnumerable
+    class CustomStackLinkedList<T> : IEnumerable<T>
     {
-        private string[] a;
-        public int N;
-        public FixedCapacityStackOfStrings(int ACapacity)
+        Node<T> first;
+        private int N;
+        class Node<T>
         {
-            a = new string[ACapacity];
-        }
-        public bool isEmpty() { return N == 0; }
-        public int size() { return N; }
-        public void push(string item)
-        {
-            a[N++] = item;
-        }
-        public string pop()
-        {
-            return a[--N];
+            public T item;
+            public Node<T> next;
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            //throw new NotImplementedException();
-            return a.GetEnumerator();
-        }
-    }
-
-    class FixedGenericsStack<T>:IEnumerable
-    {
-        private T[] a;
-        public int N;
-        public FixedGenericsStack(int ACapacity)
-        {
-            a = new T[ACapacity];
-        }
-        public bool isEmpty() { return N == 0; }
+        public bool isEmpty() { return (first == null) || (N == 0); }
         public int size() { return N; }
         public void push(T item)
         {
-            if (N == a.Length) resize(2 * a.Length);
-            a[N++] = item;
+            // adding to the begining
+            Node<T> oldfirst = first;
+            first = new Node<T>();
+            first.item = item;
+            first.next = oldfirst;
+            N++;
         }
+
         public T pop()
         {
-            T item = a[--N];            
-            if (N > 0 && N == a.Length / 4) resize(a.Length / 2);
+            T item = first.item;
+            first = first.next;
+            N--;
             return item;
         }
 
-        public void resize(int max)
-        {
-            // N <= max
-            T[] temp = new T[max];
-            for (int i = 0; i < N; i++)
-            {
-                temp[i] = a[i];
-            }
-            a = temp;
-        }
 
-        public IEnumerator GetEnumerator()
+        /*
+        IEnumerator IEnumerable.GetEnumerator()
         {
             //throw new NotImplementedException();
-            return a.GetEnumerator();
         }
-    }
+    */
 
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            var node = first;
+            while (node != null)
+            {
+                yield return node.item;
+                node = node.next;
+            }
+        }
+
+    }
 
 }
