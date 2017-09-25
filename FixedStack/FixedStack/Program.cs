@@ -11,36 +11,50 @@ namespace FixedStack
     {
         static void Main(string[] args)
         {
-            // fill stack with Count elements
-            int Count = 10;
-            FixedCapacityStackOfStrings stack = new FixedCapacityStackOfStrings(Count);
-            //FixedGenericsStack<string> stack = new FixedGenericsStack<string>(Count);
-            Random r = new Random();
-            Console.WriteLine("lets fill stack with Count elements");
-            for (int i = 0; i < Count; i++)
+            FixedGenericsStack<int> stack = new FixedGenericsStack<int>(100);
+            int N = 50;
+            while (N >0)
             {
-                int someRandomNumber = r.Next(100);
-                stack.push(someRandomNumber.ToString());                
+                stack.push(N % 2);
+                N = N / 2;
             }
+            
 
-            // iterator
-            foreach (var s in stack) { Console.WriteLine(s.ToString()); }
-
-            Console.WriteLine("What size of stack now?");
-            Console.WriteLine(stack.size());
-
-            Console.WriteLine("lets take last 5 elements from stack");
-            for (int i = 0; i < 5; i++)
-            {
-                Console.WriteLine(stack.pop());
-            }
-            Console.WriteLine("What size of stack now?");
-            Console.WriteLine(stack.size());
-            Console.WriteLine("If stack isEmpty?");
-            if (stack.isEmpty()) Console.WriteLine("Yes"); else Console.WriteLine("No");
-
+            foreach (var s in stack) Console.WriteLine(s);
             Console.ReadLine();
+            /*
+               // fill stack with Count elements
+               int Count = 10;
+               FixedCapacityStackOfStrings stack = new FixedCapacityStackOfStrings(Count);
+               //FixedGenericsStack<string> stack = new FixedGenericsStack<string>(Count);
+               Random r = new Random();
+               Console.WriteLine("lets fill stack with Count elements");
+               for (int i = 0; i < Count; i++)
+               {
+                   int someRandomNumber = r.Next(100);
+                   stack.push(someRandomNumber.ToString());                
+               }
+
+               // iterator
+               foreach (var s in stack) { Console.WriteLine(s.ToString()); }
+
+               Console.WriteLine("What size of stack now?");
+               Console.WriteLine(stack.size());
+
+               Console.WriteLine("lets take last 5 elements from stack");
+               for (int i = 0; i < 5; i++)
+               {
+                   Console.WriteLine(stack.pop());
+               }
+               Console.WriteLine("What size of stack now?");
+               Console.WriteLine(stack.size());
+               Console.WriteLine("If stack isEmpty?");
+               if (stack.isEmpty()) Console.WriteLine("Yes"); else Console.WriteLine("No");
+
+               Console.ReadLine();
+               */
         }
+
     }
 
     class FixedCapacityStackOfStrings:IEnumerable
@@ -52,6 +66,7 @@ namespace FixedStack
             a = new string[ACapacity];
         }
         public bool isEmpty() { return N == 0; }
+        public bool isFull() { return N == a.Length; }
         public int size() { return N; }
         public void push(string item)
         {
@@ -78,6 +93,7 @@ namespace FixedStack
             a = new T[ACapacity];
         }
         public bool isEmpty() { return N == 0; }
+        public bool isFull() { return N == a.Length; }
         public int size() { return N; }
         public void push(T item)
         {
