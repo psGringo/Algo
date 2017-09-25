@@ -10,7 +10,7 @@ namespace SortExamplesSelectionSort
     {
         static void Main(string[] args)
         {
-            int Count = 100;
+            int Count = 10;
             Random r = new Random();
             int[] a = new int[Count];
             
@@ -19,14 +19,17 @@ namespace SortExamplesSelectionSort
                 a[i] = r.Next(1000);
             }
 
-            SelectionSort(ref a);
+            //SelectionSort(ref a);
+            //InsertionSort(ref a);
+            //BubbleSort(ref a);
+            shellSort2(ref a);
 
             foreach (int i in a) Console.WriteLine(i);
             Console.ReadLine();
             
         }
 
-        static void SelectionSort(ref int[] a)
+        static void SelectionSort(ref int[] a) // complexity O(n^2)
         {
             for (int i = 0; i < a.Length; i++)
             {
@@ -43,5 +46,72 @@ namespace SortExamplesSelectionSort
                 a[min] = temp;
             }
         }
+
+
+        static void InsertionSort(ref int[] a) // complexity O(n^2)
+        {
+            for (int i = 0; i < a.Length; i++)
+            {
+                
+                for (int j = i; j>0; j--)
+                {
+                    if (a[j] < a[j - 1])
+                    {
+                        // exchange
+                        int temp = a[j];
+                        a[j] = a[j-1];
+                        a[j-1] = temp;
+                    }
+                }               
+            }
+        }
+
+
+        static void BubbleSort(ref int[] a) // complexity O(n^2)
+        {
+       
+            for (int i = 0; i < a.Length; i++)
+            {
+
+                for (int j = 0; j < a.Length-1; j++)
+                {
+                    if (a[j] > a[j+1])
+                    {
+                        // exchange
+                        int temp = a[j+1];
+                        a[j+1] = a[j];
+                        a[j] = temp;
+                    }
+                }
+            }           
+        }
+
+      
+
+        static void shellSort2(ref int[] a)
+        {
+            int j;
+            int step = a.Length / 2;
+            while (step > 0)
+            {
+                for (int i = 0; i < (a.Length - step); i++)
+                {
+                    j = i;
+                    while ((j >= 0) && (a[j] > a[j + step]))
+                    {
+                        int tmp = a[j];
+                        a[j] = a[j + step];
+                        a[j + step] = tmp;
+                        j -= step;
+                    }
+                }
+                step = step / 2;
+            }
+        }
+
+
+
+
+
     }
 }
