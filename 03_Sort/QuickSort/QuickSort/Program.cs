@@ -10,16 +10,17 @@ namespace QuickSortExample
     {
         static void Main(string[] args)
         {
-            /*
-            int Count = 10;
+            
+            int Count = 100;
             Random r = new Random(100);
             int[] a = new int[Count];
-
+            
             for (int i = 0; i < a.Length; i++)
             {
                 a[i] = r.Next(100);
             }
-            */
+            
+            
             
             //quicksort(a,0,a.Length-1); // << works!!
 
@@ -27,9 +28,9 @@ namespace QuickSortExample
             //qs.execute(ref a, 0, a.Length - 1); // doesn't work
 
             //int[] a = { 5, 3, 6, 4, 2, 9, 1, 8, 7 };
-            int[] a = { 5, 3, 6, 4};
-            QuickSort(a,0,a.Length-1); // works!
-           // qSort(a,0,a.Length-1); // doesn't work
+            //int[]  a = { 5, 3, 6, 4};
+           // QuickSort(a,0,a.Length-1); // works!
+            qSort(a,0,a.Length-1); // doesn't work
 
             foreach (int i in a) Console.WriteLine(i);
             Console.ReadLine();
@@ -38,36 +39,43 @@ namespace QuickSortExample
         //-----------------------------------------------
 
 
-        static void qSort(int[] a, int lo, int hi) // Doesn't work https://habrahabr.ru/sandbox/29775/
+        static void qSort(int[] a, int lo, int hi) // Works!
+        // Works! https://habrahabr.ru/sandbox/29775/
+        // http://algolist.manual.ru/sort/quick_sort.php
         {
-            int l = lo, r = hi;
-            int pivIndex = (l + r) / 2;
-            int piv = a[pivIndex];
+            int i = lo, j = hi;
+            int pivIndex = (i + j) / 2; 
+            int p = a[pivIndex];
 
-            while (l <= r)
+            while (i <= j)
             {
-                while (a[l] < piv) l++;
-                while ((a[r] > piv)&&(r>0)) r--;
-                if (l <= r)
+                while (a[i] < p) i++;
+                while ((a[j] > p)) j--;
+
+                if (i <= j)
                 {
-                    int temp = a[l];
-                    a[l] = a[r];
-                    a[r] = temp;
-                    l++;
-                    r++;
+                    int temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                    i++;
+                    j--;
                 }
             }
 
-            // qSort(a, lo, l-1);
-            // qSort(a, l+1, hi);
 
-            qSort(a, lo, r-1);
-            qSort(a, r + 1, hi);
+            /*
+            int t = a[pivIndex];
+            a[pivIndex] = a[hi];
+            a[hi] = t;
+        */
 
-           // if (lo<r) qSort(a,lo,r-1);
-           //  if (hi>l) qSort(a,l+1,hi);
-            // qSort(a, lo, pivIndex - 1);
-            // qSort(a, pivIndex + 1, hi);
+            
+            if ((j > 0)&&(lo!=pivIndex)) qSort(a, lo, pivIndex); 
+            if ((i < hi )&& (hi!= pivIndex)) qSort(a, pivIndex, hi);
+
+          //  if ((j > 0)&&(pivIndex > lo)) qSort(a, lo, pivIndex-1);
+          //  if ((i < hi)&&(pivIndex < hi)) qSort(a, pivIndex+1, hi);
+
         }
 
 
@@ -79,26 +87,27 @@ namespace QuickSortExample
             }
 
             int num = a[lo];
-            
+
+            /*
             Console.WriteLine("Before");
             Console.WriteLine("pivot index = "+lo);
             Console.WriteLine("pivot value = " + a[lo]);            
             foreach (int val in a) Console.Write(val+" ");
             Console.WriteLine(" ");
-            
+            */
 
             int i = lo, j = hi;
 
             while (i < j)
             {
-                while (i < j && a[j] > num)
+                while (i < j && a[j] >= num)
                 {
                     j--;
                 }
 
                 a[i] = a[j];
 
-                while (i < j && a[i] < num)
+                while (i < j && a[i] <= num)
                 {
                     i++;
                 }
@@ -109,6 +118,7 @@ namespace QuickSortExample
            
             a[i] = num;
 
+            /*
             Console.WriteLine("After");
             Console.WriteLine("pivot index = " + lo);
             Console.WriteLine("pivot value = " + a[lo]);
@@ -116,6 +126,7 @@ namespace QuickSortExample
             Console.WriteLine("j index = " + j);
             foreach (int val in a) Console.Write(val + " ");
             Console.WriteLine(" ");
+            */
 
             QuickSort(a, lo, i - 1);
             QuickSort(a, i + 1, hi);
