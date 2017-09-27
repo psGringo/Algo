@@ -20,14 +20,16 @@ namespace QuickSortExample
                 a[i] = r.Next(100);
             }
             */
-            //quicksort(a,0,a.Length-1);
+            
+            //quicksort(a,0,a.Length-1); // << works!!
+
             //QuickSort qs = new QuickSort();
-            //qs.execute(ref a, 0, a.Length - 1);
+            //qs.execute(ref a, 0, a.Length - 1); // doesn't work
 
             //int[] a = { 5, 3, 6, 4, 2, 9, 1, 8, 7 };
             int[] a = { 5, 3, 6, 4};
-           //  QuickSort(a,0,a.Length-1); // works!
-            qSort(a,0,a.Length-1); // doesn't work
+            QuickSort(a,0,a.Length-1); // works!
+           // qSort(a,0,a.Length-1); // doesn't work
 
             foreach (int i in a) Console.WriteLine(i);
             Console.ReadLine();
