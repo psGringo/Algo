@@ -10,7 +10,7 @@ namespace MergeSort
     {
         static void Main(string[] args)
         {
-            int Count = 1000;
+            int Count = 10;
             Random r = new Random();
             int[] a = new int[Count];
 
@@ -20,7 +20,8 @@ namespace MergeSort
             }
 
             MergeSort ms = new MergeSort();
-            ms.Execute(ref a);
+            //ms.Execute(ref a,true);
+            ms.Execute(ref a, false);
 
             foreach (int i in a) Console.WriteLine(i);
             Console.ReadLine();
@@ -34,20 +35,33 @@ namespace MergeSort
 
         private int[] aux;
 
-        public void Execute(ref int[] a)
+        public void Execute(ref int[] a,bool UpDownComing)
         {
             aux = new int[a.Length];
-            Sort(a, 0, a.Length-1);
+            if (UpDownComing) SortDownComing(a, 0, a.Length-1);
+
         }
 
-        void Sort(int[] a,int lo,int hi)
+        void SortDownComing(int[] a,int lo,int hi) // << !!! NOT DESC
         {
             if (hi <= lo) return;
             int mid = lo + (hi - lo) / 2;
-           // Console.WriteLine("Sort a " + lo + " " + hi);
-            Sort(a, lo, mid); 
-            Sort(a, mid+1, hi);
+            // Console.WriteLine("Sort a " + lo + " " + hi);
+            SortDownComing(a, lo, mid);
+            SortDownComing(a, mid+1, hi);
             Merge(a,lo,mid,hi);
+        }
+
+        void SortUpComing(int[] a) // // << !!! NOT ASC
+        {
+            int N = a.Length;
+            for (int sz = 1; sz <= N; sz = 2 * sz)
+            {
+                for (int lo = 0; lo <= N - sz; lo += 2 * sz)
+                {
+                    Merge(a, lo, lo + sz - 1, Math.Min(lo + 2 * sz - 1, N - 1));
+                }
+            }
         }
 
         public void Merge(int[] a, int lo, int mid, int hi)
