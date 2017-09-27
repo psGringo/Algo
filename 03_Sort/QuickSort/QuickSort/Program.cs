@@ -19,9 +19,9 @@ namespace QuickSortExample
             {
                 a[i] = r.Next(100);
             }
-            
-            
-            
+
+
+
             //quicksort(a,0,a.Length-1); // << works!!
 
             //QuickSort qs = new QuickSort();
@@ -29,8 +29,11 @@ namespace QuickSortExample
 
             //int[] a = { 5, 3, 6, 4, 2, 9, 1, 8, 7 };
             //int[]  a = { 5, 3, 6, 4};
-           // QuickSort(a,0,a.Length-1); // works!
-            qSort(a,0,a.Length-1); // doesn't work
+            // QuickSort(a,0,a.Length-1); // works!
+            //qSort(a,0,a.Length-1); // doesn't work
+
+            QuickSort2 qs2 = new QuickSort2();
+            qs2.Execute(a,0,a.Length-1);
 
             foreach (int i in a) Console.WriteLine(i);
             Console.ReadLine();
@@ -44,8 +47,8 @@ namespace QuickSortExample
         // http://algolist.manual.ru/sort/quick_sort.php
         {
             int i = lo, j = hi;
-            int pivIndex = (i + j) / 2; 
-            int p = a[pivIndex];
+            int pivotIndex = (i + j) / 2; 
+            int p = a[pivotIndex];
 
             while (i <= j)
             {
@@ -70,8 +73,8 @@ namespace QuickSortExample
         */
 
             
-            if ((j > 0)&&(lo!=pivIndex)) qSort(a, lo, pivIndex); 
-            if ((i < hi )&& (hi!= pivIndex)) qSort(a, pivIndex, hi);
+            if ((j > 0)&&(lo!=pivotIndex)) qSort(a, lo, pivotIndex); 
+            if ((i < hi )&& (hi!= pivotIndex)) qSort(a, pivotIndex, hi);
 
           //  if ((j > 0)&&(pivIndex > lo)) qSort(a, lo, pivIndex-1);
           //  if ((i < hi)&&(pivIndex < hi)) qSort(a, pivIndex+1, hi);
@@ -210,4 +213,43 @@ namespace QuickSortExample
         }
 
     }
+
+
+    class QuickSort2
+    {
+
+        void Swap(ref int i,ref int j)
+        {
+            int temp = i;
+            i = j;
+            j = temp;
+        }
+
+        // разделение массива по ключу key так, что левая часть - x <=key, правая часть - x > key
+        private int Partition(int[] a, int lo, int hi)
+        {            
+            int key = a[hi];
+            int i = lo - 1;
+            for (int j = lo; j < hi; j++)
+            {
+                if (a[j] <= key) Swap(ref a[++i], ref a[j]);
+            }
+            Swap(ref a[++i], ref a[hi]);
+            return i;          
+        }
+
+
+        // сортировка
+        public void Execute(int[] a, int lo, int hi)
+        {
+            if (lo < hi)
+            {
+                int key = Partition(a, lo, hi);
+                Execute(a, lo, key - 1);
+                Execute(a, key + 1, hi);
+            }
+        }
+    }
+
+
 }
