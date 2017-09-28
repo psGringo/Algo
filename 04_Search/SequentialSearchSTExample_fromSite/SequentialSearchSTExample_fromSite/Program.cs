@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 /*
  this example illustrates symbol table realized on linked list
  source http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/SequentialSearchST.java.html
-     * * /
+     */
 
 namespace SequentialSearchSTExample_fromSite
 {
