@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SequentialSearchSTExample_fromSite", "SequentialSearchSTExample_fromSite\SequentialSearchSTExample_fromSite.csproj", "{8DE8EABD-9AAF-4F46-9361-664BDC82AE00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySearchST_fromSite", "BinarySearchST_fromSite\BinarySearchST_fromSite.csproj", "{A9595832-BF55-4B19-B022-12E71F846A82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8DE8EABD-9AAF-4F46-9361-664BDC82AE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DE8EABD-9AAF-4F46-9361-664BDC82AE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DE8EABD-9AAF-4F46-9361-664BDC82AE00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9595832-BF55-4B19-B022-12E71F846A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9595832-BF55-4B19-B022-12E71F846A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9595832-BF55-4B19-B022-12E71F846A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9595832-BF55-4B19-B022-12E71F846A82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
