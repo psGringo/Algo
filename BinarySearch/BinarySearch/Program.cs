@@ -18,8 +18,8 @@ namespace BinarySearch
             Array.Sort(a);
             if (BinarySearch(5, a) != -1) Console.WriteLine("Non recursive BS: Element found");
             if (BinarySearchGeneric<int>(5, a) != -1) Console.WriteLine("Non recursive Generic BS: Element found");
-            if (BinarySearchRecursive(5, a, 0, a.Length) != -1) Console.WriteLine("Recursive BS: Element found");
-            if (BinarySearchRecursiveGeneric<int>(5, a, 0, a.Length) != -1) Console.WriteLine("Recursive Generic BS: Element found");
+            if (BinarySearchRecursive(5, a, 0, a.Length-1) != -1) Console.WriteLine("Recursive BS: Element found");
+            if (BinarySearchRecursiveGeneric<int>(5, a, 0, a.Length-1) != -1) Console.WriteLine("Recursive Generic BS: Element found");
 
             Console.ReadLine();
 
@@ -65,7 +65,7 @@ namespace BinarySearch
 
         public static int BinarySearchRecursiveGeneric<T>(T key, int[] a, int lo, int hi) where T : IComparable
         {
-            //  if (hi < lo) return lo;
+            if (hi < lo) return lo;
             int mid = lo + (hi - lo) / 2;
             int cmp = key.CompareTo(a[mid]);
             if (cmp < 0) { return BinarySearchRecursiveGeneric(key, a, lo, mid - 1); }

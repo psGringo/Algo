@@ -61,38 +61,43 @@ namespace BinarySearchExampleSTExample
         public Value get(Key key)
         {
             if (isEmpty()) return default(Value);
-            int i = rank<Key>(key, 0, keys.Length - 1);
+            int i = rank<Key>(key,keys, 0, keys.Length - 1);
             if (i <= N && keys[i].CompareTo(key) == 0) return vals[i];
             else return default(Value);
         }
 
         public void put(Key key, Value val)
         {
-            int i = rank<Key>(key, 0, keys.Length);
-            if (i <= N && keys[i].CompareTo(key) == 0) // if found and equal to just change value
+            int i = rank<Key>(key,keys, 0, keys.Length-1);
+           // if (i != -1) // found in keys...
             {
-                vals[i]=val;
-                return;
+                if (i <= N && keys[i].CompareTo(key) == 0) // if found and equal to just change value
+                {
+                    vals[i] = val;
+                    return;
+                }
             }
+
+          //  else 
             for (int j = N; j > i; j--) // if not found - shift values
             {
                 keys[j] = keys[j - 1];
                 vals[j] = vals[j - 1];
             }
+
             keys[i] = key;
             vals[i] = val;
             N++;
         }
 
-        public int rank<T>(T key, int lo, int hi) where T : IComparable
+        public int rank<T>(T key, Key[] keys, int lo, int hi) where T : IComparable
         {
-            if (hi < lo) return lo;
-            int mid = (hi - lo) / 2; //lo + (hi - lo) / 2;
+            if (hi < lo) return lo-1 ;
+            int mid = lo + (hi - lo) / 2;
             int cmp = key.CompareTo(keys[mid]);
-            if (cmp < 0) { rank<T>(key, lo, mid - 1); }
-            else if (cmp > 0) { rank<T>(key, mid + 1, hi); }
+            if (cmp < 0) { return rank(key, keys, lo, mid - 1); }
+            else if (cmp > 0) { return rank(key, keys, mid + 1, hi); }
             else return mid;
-            return -1;
         }
 
         public void ConsoleDisplay()
