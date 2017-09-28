@@ -47,6 +47,8 @@ namespace BinarySearchST_fromSite
         {
 
             BinarySearchST<string, int> st = new BinarySearchST<string, int>();
+            Array.Sort(a); // we sort because we use binary search inside
+
             //adding
             for (int i = 0; i < a.Length; i++)
             {
@@ -83,6 +85,8 @@ namespace BinarySearchST_fromSite
         public void Execute()
         {
             BinarySearchST<string, int> st = new BinarySearchST<string, int>(a.Length);
+            Array.Sort(a); // we sort because we use binary search inside
+
             //adding
             for (int i = 0; i < a.Length; i++)
             {
