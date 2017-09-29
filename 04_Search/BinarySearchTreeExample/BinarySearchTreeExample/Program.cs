@@ -100,6 +100,8 @@ namespace BinarySearchTreeExample
             }
             Console.WriteLine("maxFrequentWord=" + maxFrequentWord + " maxFrequency " + st.get(maxFrequentWord));
             st.ConsoleDisplay();
+
+            
         }
 
     }
