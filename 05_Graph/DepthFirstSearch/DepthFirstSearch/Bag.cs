@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DepthFirstSearch
+namespace SearchInGraphExample
 {
 
     public class Bag<T> : IEnumerable<T>
