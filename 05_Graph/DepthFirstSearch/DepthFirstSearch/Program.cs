@@ -14,13 +14,24 @@ namespace SearchInGraphExample
             Console.WriteLine(g.toString());
             //testDFS(g);
             testBFS(g);
+            CCTest(g);
+
+
             Console.ReadLine();
 
         }
 
+        static void CCTest(Graph g) // Closable components test
+        {
+            CC cc = new CC(g);
+            Console.WriteLine();
+            if (cc.connected(7, 8)) Console.WriteLine("Yes! 7 and 8 in one part of Graph, connected");
+            if (!cc.connected(7, 0)) Console.WriteLine("N0! 7 and 0 in diff parts of Graph, not connected");
+        }
+
         static void testBFS(Graph g)
         {
-            BreadthFirstPaths bfp = new BreadthFirstPaths(g);
+            BreadthFirstSearch bfp = new BreadthFirstSearch(g);
             // graph consists of 3 parts so we start search since 3 start elements
             bfp.bfs(g, 0);
             Console.WriteLine();

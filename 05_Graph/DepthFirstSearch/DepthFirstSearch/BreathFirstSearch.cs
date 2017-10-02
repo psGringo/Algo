@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearchInGraphExample
 {
-    class BreadthFirstPaths
+    class BreadthFirstSearch
     {
         private static int INFINITY = int.MaxValue;
         private bool[] marked;  // marked[v] = is there an s-v path
@@ -20,7 +20,7 @@ namespace SearchInGraphExample
    * @param s the source vertex
    * @throws IllegalArgumentException unless {@code 0 <= s < V}
    */
-        public BreadthFirstPaths(Graph G, int s)
+        public BreadthFirstSearch(Graph G, int s)
         {
             marked = new bool[G.V];
             distTo = new int[G.V];
@@ -29,7 +29,7 @@ namespace SearchInGraphExample
             bfs(G, s);
             //assert check(G, s);
         }
-        public BreadthFirstPaths(Graph G)
+        public BreadthFirstSearch(Graph G)
         {
             marked = new bool[G.V];
             distTo = new int[G.V];
