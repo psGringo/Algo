@@ -13,7 +13,7 @@ namespace SearchInGraphExample
             Graph g = new Graph("tinyG.txt");
             Console.WriteLine(g.toString());
             //testDFS(g);
-            testBFS(g);
+            //testBFS(g);
             CCTest(g);
 
 
