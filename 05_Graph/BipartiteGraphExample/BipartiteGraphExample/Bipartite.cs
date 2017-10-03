@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ namespace BipartiteGraphExample
 {
     public class Bipartite
     {
-        private bool isBipartite { get; set; }   // is the graph bipartite?
+        public bool isBipartite { get; set; }   // is the graph bipartite?
         private bool[] color;       // color[v] gives vertices on one side of bipartition
         private bool[] marked;      // marked[v] = true if v has been visited in DFS
         private int[] edgeTo;          // edgeTo[v] = last edge on path to v
-        private Stack<int> cycle;  // odd-length cycle
+        public Stack<int> cycle;  // odd-length cycle
 
         /**
    * Determines whether an undirected graph is bipartite and finds either a
@@ -34,8 +35,9 @@ namespace BipartiteGraphExample
                     dfs(G, v);
                 }
             }
-           // assert check(G);
+            Trace.Assert(check(G));
         }
+
         private void dfs(Graph G, int v)
         {
             marked[v] = true;
@@ -129,6 +131,10 @@ namespace BipartiteGraphExample
             int V = marked.Length;
             if (v < 0 || v >= V)
                 throw new ArgumentException("vertex " + v + " is not between 0 and " + (V - 1));
+        }
+        public void showCycle()
+        {
+            foreach (var c in cycle) Console.WriteLine(c);
         }
 
     }

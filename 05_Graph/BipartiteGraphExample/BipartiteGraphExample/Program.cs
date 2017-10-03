@@ -10,6 +10,13 @@ namespace BipartiteGraphExample
     {
         static void Main(string[] args)
         {
+            Graph g = new Graph("tinyG.txt");
+            Console.WriteLine(g.toString());
+            Bipartite b = new Bipartite(g);
+            if (b.isBipartite) Console.WriteLine("Yes! Bipartite!");
+            else Console.WriteLine("Not Bipartite");
+            b.showCycle();
+            Console.ReadLine();
         }
     }
 }
