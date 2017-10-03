@@ -10,7 +10,7 @@ namespace SymbolGraphExample
     {
     }
 
-    public class SequentialSearchST<Key, Value> : IEnumerable<Key>
+    public class SequentialSearchST<Key, Value> : IEnumerable<Key> where Value:IComparable
     {
         private int n;           // number of key-value pairs
         private Node first;      // the linked list of key-value pairs
@@ -67,14 +67,10 @@ namespace SymbolGraphExample
   */
         public bool contains(Key key)
         {
-            if (key == null) throw new ArgumentException("argument to contains() is null");
-            //var dv = default(Value);
-            //if(get(key) is (default(Value))  return true;
-            //if(get(key)!=DefaultValue)
+            if (key == null) throw new ArgumentException("argument to contains() is null");            
             Value r = get(key);
-            //if(r==0 is default(Value)) return false;
-            //if((r is int)&&(r!=0))
-            return (r != null);
+            return (r.CompareTo(default(Value)) != 0);
+            
         }
         /**
    * Returns the value associated with the given key in this symbol table.

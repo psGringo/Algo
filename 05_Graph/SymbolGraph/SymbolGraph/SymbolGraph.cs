@@ -11,15 +11,15 @@ namespace SymbolGraphExample
 
     public class SymbolGraph
     {
-        private SequentialSearchST<String, int> st;  // string -> index
-        //private Dictionary<String, int> d;
+      //  private SequentialSearchST<String, int> st;  // string -> index 
+        private Dictionary<string, int> d;
         private string[] keys;           // index  -> string
         private Graph graph;             // the underlying graph
 
         public SymbolGraph(string filepath, char delimiter)
         {
-            st = new SequentialSearchST<String, int>();
-          //  d = new Dictionary<String, int>();
+            //st = new SequentialSearchST<String, int>();
+            d = new Dictionary<string, int>();          
 
             try
             {
@@ -31,10 +31,17 @@ namespace SymbolGraphExample
                         string[] substrings = s.Split(delimiter);
                         foreach (var substring in substrings)
                         {
-                            if (st.get(substring)==0)
-                                st.put(substring, st.size());
-                            //if (!d.ContainsKey(substring))
-                            //    st.put(substring, st.size());                            
+                            //if (!st.contains(substring))
+                            if (!d.ContainsKey(substring))
+                            {
+                                //st.put(substring, st.size()+1);
+                                int c = d.Count;
+                                d.Add(substring, c);
+                                //Console.WriteLine(substring+" "+st.size());
+                                Console.WriteLine(substring + " " + c);
+                                //Console.WriteLine();
+                                //st.ConsoleDisplay();
+                            }
                         }
                         
                     }
@@ -42,16 +49,29 @@ namespace SymbolGraphExample
             }
 
             catch (Exception e) { Console.WriteLine("The process failed: {0}", e.ToString()); };
-            
+
             // inverted index to get string keys in an aray
-            keys = new string[st.size()];
+            //keys = new string[st.size()];
+            keys = new string[d.Count];
+            foreach (KeyValuePair<string, int> entry in d)
+            {
+                // do something with entry.Value or entry.Key
+                keys[entry.Value] = entry.Key;
+            }
+
+            //test
+            //foreach (string k in keys) Console.WriteLine(k); 
+
+            /* deprecated
             foreach (string name in st.keys())
             {
                 keys[st.get(name)] = name;
             }
-            
+            */
+
             // building graph in second reading file
-            graph = new Graph(st.size());
+            // graph = new Graph(st.size());
+            graph = new Graph(d.Count);
             try
             {
                 using (StreamReader sr = new StreamReader(filepath))
@@ -60,11 +80,16 @@ namespace SymbolGraphExample
                     {
                         string s = sr.ReadLine();
                         string[] substrings = s.Split(delimiter);
-                        int v = st.get(substrings[0]);
-                        for (var i = 0; i < substrings.Length; i++)
+                        //int v = st.get(substrings[0]);
+                        //int v = d.FirstOrDefault(x=>x.Key== substrings[0]).Value;   //st.get(substrings[0]);
+                        int v = d[substrings[0]];
+                        for (var i = 1; i < substrings.Length; i++)
                         {
-                            int w = st.get(substrings[i]);
-                            graph.addEdge(v,w);
+                            //int w  -1;
+                            //int w = d.First(x => x.Key == substrings[i]).Value;  //st.get(substrings[i]);
+                            int w = d[substrings[i]];
+                            //if (w!=v)
+                                graph.addEdge(v,w);
                         }                        
                     }
                 }
@@ -80,7 +105,8 @@ namespace SymbolGraphExample
  */
         public bool contains(String s)
         {
-            return st.contains(s);
+            // return d.FirstOrDefault(x => x.Key == s).Key!=null; //st.contains(s);
+            return d.ContainsKey(s); //st.contains(s);
         }
         /**
    * Returns the integer associated with the vertex named {@code s}.
@@ -89,7 +115,7 @@ namespace SymbolGraphExample
    */
         public int indexOf(String s)
         {
-            return st.get(s);
+            return d.FirstOrDefault(x => x.Key == s).Value;//st.get(s);            
         }
         /**
  * Returns the name of the vertex associated with the integer {@code v}.
