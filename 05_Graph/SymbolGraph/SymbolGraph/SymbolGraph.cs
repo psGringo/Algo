@@ -38,7 +38,7 @@ namespace SymbolGraphExample
                                 int c = d.Count;
                                 d.Add(substring, c);
                                 //Console.WriteLine(substring+" "+st.size());
-                                Console.WriteLine(substring + " " + c);
+                                //Console.WriteLine(substring + " " + c);
                                 //Console.WriteLine();
                                 //st.ConsoleDisplay();
                             }
@@ -137,6 +137,7 @@ namespace SymbolGraphExample
         {
             return graph;
         }
+
         // throw an IllegalArgumentException unless {@code 0 <= v < V}
         private void validateVertex(int v)
         {

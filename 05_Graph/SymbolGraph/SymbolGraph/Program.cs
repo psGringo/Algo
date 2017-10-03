@@ -10,9 +10,16 @@ namespace SymbolGraphExample
     {
         static void Main(string[] args)
         {
-            SymbolGraph sg = new SymbolGraph("Airports.txt", ' ');
-            Console.WriteLine(sg.toString());
+            //SymbolGraph sg = new SymbolGraph("Airports.txt", ' ');
+            //Console.WriteLine(sg.toString());
+            DegreesOfSeparationTest();
             Console.ReadLine();
+        }
+
+        static void DegreesOfSeparationTest()
+        {
+            DegreesOfSeparation ds = new DegreesOfSeparation("Airports.txt", ' ', "JFK");
+            ds.Execute();
         }
     }
 }
