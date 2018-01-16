@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GraphBasics2;
 
-namespace GraphBasics2
+namespace GraphBasics
 {
     class Program
     {
@@ -14,6 +9,7 @@ namespace GraphBasics2
             Console.WriteLine("Hello friends");
             try
             {
+                Console.WriteLine("hi it is Graph and DFS example");
                 Graph g = new Graph("tinyGraph.txt");
                 Console.WriteLine(g.ToString());
                 Console.ReadLine();

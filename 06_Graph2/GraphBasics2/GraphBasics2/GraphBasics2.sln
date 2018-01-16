@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphBasics2", "GraphBasics2\GraphBasics2.csproj", "{E0B1036B-63B6-4FE4-A564-0E36996001BA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphBasics", "GraphBasics2\GraphBasics.csproj", "{E0B1036B-63B6-4FE4-A564-0E36996001BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

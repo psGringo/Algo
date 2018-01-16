@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphBasics2
+namespace GraphBasics
 {
-    class Graph
+    public class Graph
     {
         public int V { get; set; }
         public int E { get; set; }
         public Bag<int>[] adj;
-        public Graph(int V)
+        public Graph(int V) // init empty graph with V verticles
         {
             if (V < 0)
             {
@@ -27,7 +27,7 @@ namespace GraphBasics2
                 adj[v] = new Bag<int>();
             }
         }
-        public Graph(string aFilePath)
+        public Graph(string aFilePath) // init graph from filePath
         {
        
             if (!File.Exists(aFilePath)) throw new Exception("file not exists");

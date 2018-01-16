@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphBasics2
+namespace GraphBasics
 {
     class DFS
     {
@@ -12,7 +12,7 @@ namespace GraphBasics2
         public int Count { get; set; }
         public DFS(Graph G, int v)
         {
-            this.IsMarked[] = new Boolean[G.Vertices()];
+            this.IsMarked = new Boolean[G.Vertices()];
         }
         private void IsSuchVerticle(Graph G, int v) // is such v in this graph?
         {

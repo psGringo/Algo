@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GraphBasics2
+namespace GraphBasics
 {
-    class Bag<T> : IEnumerable<T>
+    public class Bag<T> : IEnumerable<T>
     {
         Node<T> first;
         private int N;
